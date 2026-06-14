@@ -294,8 +294,8 @@ ul {
    ANNOUNCEMENT BANNER
    ============================================================ */
 .announce-bar {
-  background: #fde68a;
-  color: var(--red);
+  background: burlywood;
+  color: blue;
   text-align: center;
   font-size: 0.85rem;
   font-weight: 700;
@@ -698,6 +698,8 @@ ul {
   background: #1a1a1a;
   color: rgba(255,255,255,.8);
   padding: 3.5rem 1.5rem 0;
+  height: full;
+  width: full;
 }
 
 .footer-grid {
