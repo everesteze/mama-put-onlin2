@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MaMaPutOnline | Home of Authentic Nigerian Dishes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/claude-styes.css">
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       ANNOUNCEMENT BANNER
+  ══════════════════════════════════════════ -->
+  <div class="announce-bar" role="banner">
+    🔥 Today's Special: <strong>20% off all Combo Orders</strong> — Use code <strong>NAIJA20</strong> at checkout! 🛵 Free delivery on orders over ₦5,000
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       STICKY HEADER
+  ══════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+    <!-- Top bar: Logo + Search + Cart -->
+    <div class="header-top container">
+      <!-- Logo -->
+      <a href="#" class="logo-wrap" aria-label="MaMaPutOnline home">
+        <div class="logo-icon" aria-hidden="true">MP</div>
+        <div>
+          <div class="logo-name">MaMaPut<span>Online</span></div>
+          <div class="logo-sub">Authentic Naija Flavours</div>
+        </div>
+      </a>
+
+      <!-- Search -->
+      <div class="search-wrap" role="search">
+        <label for="site-search" class="sr-only">Search dishes</label>
+        <input
+          id="site-search"
+          type="search"
+          class="search-input"
+          placeholder="Search soups, rice, proteins…"
+          autocomplete="off"
+        >
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </div>
+
+      <!-- Cart -->
+      <button class="cart-btn" aria-label="View cart, 0 items" id="cart-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        Cart
+        <span class="cart-badge" id="cart-count" aria-live="polite">0</span>
+      </button>
+    </div>
+
+    <!-- Dark-red nav bar (desktop) -->
+    <nav class="nav-bar" aria-label="Main navigation">
+      <div class="nav-inner">
+        <div class="nav-links">
+          <a href="#soups">🥣 Soups</a>
+          <a href="#rice-dishes">🍛 Rice Dishes</a>
+          <a href="#swallows-sides">🍠 Swallows & Sides</a>
+          <a href="#protein-treats">🍗 Proteins & Snacks</a>
+          <a href="#native-delicacy">🥘 Native Delicacies</a>
+          <a href="#contact">📞 Contact Us</a>
+        </div>
+        <span class="nav-tagline">Fresh. Naija. Delicious.</span>
+        <!-- Hamburger (mobile) -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu" role="menu">
+      <a href="#soups" role="menuitem">🥣 Soups</a>
+      <a href="#rice-dishes" role="menuitem">🍛 Rice Dishes</a>
+      <a href="#swallows-sides" role="menuitem">🍠 Swallows & Sides</a>
+      <a href="#protein-treats" role="menuitem">🍗 Proteins & Snacks</a>
+      <a href="#native-delicacy" role="menuitem">🥘 Native Delicacies</a>
+      <a href="#contact" role="menuitem">📞 Contact Us</a>
+    </div>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════════ -->
+  <section class="hero" aria-label="Welcome section">
+    <div class="hero-inner">
+      <!-- Left: text -->
+      <div class="hero-text">
+        <div class="hero-eyebrow">🍽️ Fresh Daily · No Preservatives</div>
+        <h1 class="hero-heading">
+          <span class="accent">Taste of Home</span><br>
+          Authentic Nigerian<br>Delicacies, Delivered.
+        </h1>
+        <p class="hero-desc">
+          Craving that rich Egusi, smoky Jollof, or spicy Nkwobi? Get the real taste of home — fresh from the MaMaPutOnline kitchen straight to your doorstep.
+        </p>
+        <a href="#soups" class="hero-cta">Order Now — Satisfy Cravings! 🛵</a>
+        <div class="hero-meta">
+          <span>⭐ 4.9 (500+ reviews)</span>
+          <span>🚚 Free delivery over ₦5,000</span>
+          <span>⏱️ 30–45 min delivery</span>
+        </div>
+      </div>
+
+      <!-- Right: image -->
+      <div class="hero-image-wrap">
+        <img
+          src="../image/egusi 1.jpeg"
+          alt="Steaming bowl of Egusi soup with assorted meat"
+          onerror="this.src='https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600'"
+        >
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       MAIN CONTENT: SIDE PANEL + PRODUCTS
+  ══════════════════════════════════════════ -->
+  <main class="main-layout" id="main-content">
+
+    <!-- ── SIDE PANEL ── -->
+    <aside class="side-panel" aria-label="Menu categories">
+      <h2>📌 Menu Categories</h2>
+      <ul class="side-nav" role="list">
+        <li>
+          <a href="#soups">
+            <span class="emoji">🥣</span>
+            Soups (Egusi, Ogbono, Ora+)
+          </a>
+        </li>
+        <li>
+          <a href="#rice-dishes">
+            <span class="emoji">🍛</span>
+            Rice Specials (Jollof, Fried)
+          </a>
+        </li>
+        <li>
+          <a href="#swallows-sides">
+            <span class="emoji">🍠</span>
+            Swallows &amp; Sides
+          </a>
+        </li>
+        <li>
+          <a href="#protein-treats">
+            <span class="emoji">🍗</span>
+            Proteins &amp; Snacks
+          </a>
+        </li>
+        <li>
+          <a href="#native-delicacy">
+            <span class="emoji">🥘</span>
+            Native Delicacies
+          </a>
+        </li>
+      </ul>
+
+      <div class="side-offer">
+        <div class="offer-badge">
+          🔥 20% OFF Combo Orders!<br>
+          <span style="font-weight:400;font-size:.82rem;opacity:.9">Use code <strong>NAIJA20</strong></span>
+        </div>
+        <p style="font-size:.8rem;color:#888;margin-top:.85rem;font-style:italic;">
+          ⭐ Tap any product card to add it to your cart.
+        </p>
+      </div>
+    </aside>
+
+    <!-- ── PRODUCT AREA ── -->
+    <div class="product-area">
+
+      <!-- ─────────────────────────
+           ROW 1 · SIGNATURE SOUPS
+      ───────────────────────── -->
+      <section id="soups" class="product-section" aria-labelledby="heading-soups">
+        <div class="section-head">
+          <div class="bar" aria-hidden="true"></div>
+          <h2 id="heading-soups">🥣 Signature Soups</h2>
+        </div>
+        <div class="product-grid">
+
+          <!-- Egusi Soup -->
+          <article class="card" role="article">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="../image/egusi 1.jpeg" alt="Rich Egusi soup with assorted meat and leafy vegetables"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍲</div>'">
+              </div>
+              <span class="card-badge">Best Seller</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Egusi Soup</h3>
+              <p class="card-desc">Rich melon seed soup with assorted meat &amp; leafy vegetables. A true Naija classic.</p>
+              <div class="card-footer">
+                <span class="card-price">₦3,500</span>
+                <span class="card-qty">1 plate</span>
+              </div>
+              <button class="btn-cart" data-name="Egusi Soup" data-price="3500">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Ewedu Soup -->
+          <article class="card" role="article">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="../image/amala soup.jpeg" alt="Ewedu draw soup served with jute leaves"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🥬</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Ewedu Soup</h3>
+              <p class="card-desc">Draw soup with jute leaves, the classic companion of golden amala.</p>
+              <div class="card-footer">
+                <span class="card-price">₦2,800</span>
+                <span class="card-qty">500 ml</span>
+              </div>
+              <button class="btn-cart" data-name="Ewedu Soup" data-price="2800">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Ora Soup -->
+          <article class="card" role="article">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="../image/ofa eda 1.jpeg" alt="Ora soup with ugu leaves, thick and aromatic"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🌿</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Ora Soup</h3>
+              <p class="card-desc">Ugu / ora leaves, thick and aromatic, full of protein and bold Edo flavour.</p>
+              <div class="card-footer">
+                <span class="card-price">₦3,200</span>
+                <span class="card-qty">Per serving</span>
+              </div>
+              <button class="btn-cart" data-name="Ora Soup" data-price="3200">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Edikaikong -->
+          <article class="card" role="article">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="../image/edikako 1.jpeg" alt="Edikaikong soup with waterleaf, pumpkin, fresh fish and periwinkle"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🫘</div>'">
+              </div>
+              <span class="card-badge">Calabar Fav</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Edikaikong</h3>
+              <p class="card-desc">Waterleaf &amp; pumpkin, fresh fish &amp; periwinkle. Calabar's pride.</p>
+              <div class="card-footer">
+                <span class="card-price">₦3,800</span>
+                <span class="card-qty">Rich combo</span>
+              </div>
+              <button class="btn-cart" data-name="Edikaikong" data-price="3800">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Okazi Soup -->
+          <article class="card" role="article">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="../image/bitter leaf 1.jpeg" alt="Okazi soup, afang style with wild spinach"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍃</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Okazi Soup</h3>
+              <p class="card-desc">Afang style, wild spinach, bold savory flavour. Perfect with any swallow.</p>
+              <div class="card-footer">
+                <span class="card-price">₦3,500</span>
+                <span class="card-qty">Full portion</span>
+              </div>
+              <button class="btn-cart" data-name="Okazi Soup" data-price="3500">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Ogbono Soup -->
+          <article class="card" role="article">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="../image/obono1.jpeg" alt="Ogbono draw soup with oxtail and stockfish"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍵</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Ogbono Soup</h3>
+              <p class="card-desc">Draw soup with ogbono seeds, oxtail &amp; stockfish. Available spicy on request.</p>
+              <div class="card-footer">
+                <span class="card-price">₦3,600</span>
+                <span class="card-qty">Spicy option</span>
+              </div>
+              <button class="btn-cart" data-name="Ogbono Soup" data-price="3600">Add to Cart</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────────
+           ROW 2 · RICE & CLASSICS
+      ───────────────────────── -->
+      <section id="rice-dishes" class="product-section" aria-labelledby="heading-rice">
+        <div class="section-head">
+          <div class="bar" aria-hidden="true"></div>
+          <h2 id="heading-rice">🍛 Rice &amp; Comfort Classics</h2>
+        </div>
+        <div class="product-grid">
+
+          <!-- Jollof Rice -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/jallof rice.jpeg" alt="Party Jollof rice, smoky with fried plantain"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍛</div>'">
+              </div>
+              <span class="card-badge">🔥 Party Style</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Jollof Rice</h3>
+              <p class="card-desc">Smoky party-style jollof with fried plantain. The one dish that unites us all.</p>
+              <div class="card-footer">
+                <span class="card-price">₦2,500</span>
+                <span class="card-qty">Per plate</span>
+              </div>
+              <button class="btn-cart" data-name="Jollof Rice" data-price="2500">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Fried Rice -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/now.jpeg" alt="Nigerian fried rice with vegetables, liver and shrimp"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍚</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Fried Rice</h3>
+              <p class="card-desc">Mixed veg, liver, shrimp — fragrant and colourful. Great with chicken.</p>
+              <div class="card-footer">
+                <span class="card-price">₦3,000</span>
+                <span class="card-qty">Large plate</span>
+              </div>
+              <button class="btn-cart" data-name="Fried Rice" data-price="3000">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Beans & Plantain -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ogusi soap.jpeg" alt="Porridge beans with fried ripe plantain"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🫘</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Beans &amp; Plantain</h3>
+              <p class="card-desc">Creamy porridge beans paired with sweet ripe dodo — the combo of the gods.</p>
+              <div class="card-footer">
+                <span class="card-price">₦2,200</span>
+                <span class="card-qty">Per serve</span>
+              </div>
+              <button class="btn-cart" data-name="Beans & Plantain" data-price="2200">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Fried Plantain -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./plantain.jpeg" alt="Crispy fried ripe plantain slices"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍌</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Fried Plantain</h3>
+              <p class="card-desc">Sweet ripe dodo, golden and crispy outside, soft inside. Perfect side.</p>
+              <div class="card-footer">
+                <span class="card-price">₦1,200</span>
+                <span class="card-qty">Per order</span>
+              </div>
+              <button class="btn-cart" data-name="Fried Plantain" data-price="1200">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- White Rice + Stew -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/jallof rice.jpeg" alt="White rice served with rich tomato stew"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍽️</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">White Rice + Stew</h3>
+              <p class="card-desc">Plain parboiled rice topped with our rich, slow-cooked tomato &amp; pepper stew.</p>
+              <div class="card-footer">
+                <span class="card-price">₦2,000</span>
+                <span class="card-qty">Per plate</span>
+              </div>
+              <button class="btn-cart" data-name="White Rice + Stew" data-price="2000">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Ofada Rice -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/now.jpeg" alt="Ofada rice with native green sauce"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🌶️</div>'">
+              </div>
+              <span class="card-badge">Local Legend</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Ofada Rice + Sauce</h3>
+              <p class="card-desc">Earthy local ofada rice served with bold, smoky native green sauce &amp; assorted offal.</p>
+              <div class="card-footer">
+                <span class="card-price">₦3,200</span>
+                <span class="card-qty">Per wrap</span>
+              </div>
+              <button class="btn-cart" data-name="Ofada Rice + Sauce" data-price="3200">Add to Cart</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────────
+           ROW 3 · SWALLOWS & SIDES
+      ───────────────────────── -->
+      <section id="swallows-sides" class="product-section" aria-labelledby="heading-swallows">
+        <div class="section-head">
+          <div class="bar" aria-hidden="true"></div>
+          <h2 id="heading-swallows">🍠 Swallows &amp; Sides</h2>
+        </div>
+        <div class="product-grid">
+
+          <!-- Eba -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ogusi soap.jpeg" alt="Eba (Garri) swallow"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🟡</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Eba (Garri)</h3>
+              <p class="card-desc">Classic garri swallow, smooth and firm. Pairs with any soup on the menu.</p>
+              <div class="card-footer"><span class="card-price">₦800</span><span class="card-qty">Per ball</span></div>
+              <button class="btn-cart" data-name="Eba" data-price="800">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Amala -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/owado soup.jpeg" alt="Smooth dark amala swallow"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🌑</div>'">
+              </div>
+              <span class="card-badge">Lagos Fav</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Amala</h3>
+              <p class="card-desc">Smooth yam-flour swallow with a distinctive dark hue. Best with Ewedu &amp; Gbegiri.</p>
+              <div class="card-footer"><span class="card-price">₦900</span><span class="card-qty">Per ball</span></div>
+              <button class="btn-cart" data-name="Amala" data-price="900">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Pounded Yam -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ofa osalla.jpeg" alt="Smooth pounded yam"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>⬜</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Pounded Yam</h3>
+              <p class="card-desc">Hand-pounded fresh yam, silky smooth and stretchy. The king of swallows.</p>
+              <div class="card-footer"><span class="card-price">₦1,500</span><span class="card-qty">Per ball</span></div>
+              <button class="btn-cart" data-name="Pounded Yam" data-price="1500">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Fufu -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ndikako.jpeg" alt="Cassava fufu swallow"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🤍</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Cassava Fufu</h3>
+              <p class="card-desc">Fermented cassava fufu with mild sourness. Great with Ogbono or Egusi.</p>
+              <div class="card-footer"><span class="card-price">₦1,000</span><span class="card-qty">Per ball</span></div>
+              <button class="btn-cart" data-name="Cassava Fufu" data-price="1000">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Moi Moi -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/obono.jpeg" alt="Moi moi steamed bean pudding"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🫕</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Moi Moi</h3>
+              <p class="card-desc">Steamed bean pudding with egg, fish &amp; crayfish. Rich, protein-packed side.</p>
+              <div class="card-footer"><span class="card-price">₦1,200</span><span class="card-qty">Per wrap</span></div>
+              <button class="btn-cart" data-name="Moi Moi" data-price="1200">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Coleslaw -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/now.jpeg" alt="Nigerian-style creamy coleslaw"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🥗</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Nigerian Coleslaw</h3>
+              <p class="card-desc">Creamy cabbage coleslaw with carrots. The party rice sidekick.</p>
+              <div class="card-footer"><span class="card-price">₦700</span><span class="card-qty">Per cup</span></div>
+              <button class="btn-cart" data-name="Nigerian Coleslaw" data-price="700">Add to Cart</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────────
+           ROW 4 · PROTEINS & SNACKS
+      ───────────────────────── -->
+      <section id="protein-treats" class="product-section" aria-labelledby="heading-protein">
+        <div class="section-head">
+          <div class="bar" aria-hidden="true"></div>
+          <h2 id="heading-protein">🍗 Proteins &amp; Snacks</h2>
+        </div>
+        <div class="product-grid">
+
+          <!-- Grilled Chicken -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/jallof rice.jpeg" alt="Grilled chicken seasoned with suya spices"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍗</div>'">
+              </div>
+              <span class="card-badge">🔥 Spicy</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Grilled Chicken</h3>
+              <p class="card-desc">Seasoned with native spices and char-grilled to smoky perfection.</p>
+              <div class="card-footer"><span class="card-price">₦2,500</span><span class="card-qty">Half chicken</span></div>
+              <button class="btn-cart" data-name="Grilled Chicken" data-price="2500">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Suya -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ofa osalla.jpeg" alt="Suya beef skewers with yaji spice"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🥩</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Suya Sticks</h3>
+              <p class="card-desc">Thin sliced beef with peanut yaji spice, fire-grilled. Northern Nigeria's gift.</p>
+              <div class="card-footer"><span class="card-price">₦1,800</span><span class="card-qty">5 sticks</span></div>
+              <button class="btn-cart" data-name="Suya Sticks" data-price="1800">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Kpomo -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ndikako.jpeg" alt="Kpomo stewed cow skin"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🫕</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Kpomo (Cow Skin)</h3>
+              <p class="card-desc">Tender stewed cow skin, deep in flavour. A protein that never goes out of style.</p>
+              <div class="card-footer"><span class="card-price">₦1,500</span><span class="card-qty">Per serve</span></div>
+              <button class="btn-cart" data-name="Kpomo" data-price="1500">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Puff Puff -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/obono.jpeg" alt="Puff puff Nigerian doughnuts"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍩</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Puff Puff</h3>
+              <p class="card-desc">Fluffy, golden fried dough balls dusted with sugar. Nigeria's favourite snack.</p>
+              <div class="card-footer"><span class="card-price">₦800</span><span class="card-qty">10 pieces</span></div>
+              <button class="btn-cart" data-name="Puff Puff" data-price="800">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Chin Chin -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/now.jpeg" alt="Crunchy chin chin Nigerian snack"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🪙</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Chin Chin</h3>
+              <p class="card-desc">Crunchy fried dough bites, slightly sweet. The ultimate Nigerian party snack.</p>
+              <div class="card-footer"><span class="card-price">₦600</span><span class="card-qty">Per bag</span></div>
+              <button class="btn-cart" data-name="Chin Chin" data-price="600">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Fish Pepper Soup -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/owado soup.jpeg" alt="Hot catfish pepper soup"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🐟</div>'">
+              </div>
+              <span class="card-badge">Medicinal</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Fish Pepper Soup</h3>
+              <p class="card-desc">Hot catfish in aromatic pepper soup broth. The cure for every ailment.</p>
+              <div class="card-footer"><span class="card-price">₦3,000</span><span class="card-qty">Per bowl</span></div>
+              <button class="btn-cart" data-name="Fish Pepper Soup" data-price="3000">Add to Cart</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ─────────────────────────
+           ROW 5 · NATIVE DELICACIES
+      ───────────────────────── -->
+      <section id="native-delicacy" class="product-section" aria-labelledby="heading-native">
+        <div class="section-head">
+          <div class="bar" aria-hidden="true"></div>
+          <h2 id="heading-native">🥘 Native Delicacies</h2>
+        </div>
+        <div class="product-grid">
+
+          <!-- Nkwobi -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ofa osalla.jpeg" alt="Nkwobi spicy cow foot in palm nut sauce"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🦶</div>'">
+              </div>
+              <span class="card-badge">Fan Fav</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Nkwobi</h3>
+              <p class="card-desc">Spicy cow foot in thick palm nut sauce. A crowd-pleaser at every owambe.</p>
+              <div class="card-footer"><span class="card-price">₦4,500</span><span class="card-qty">Per pot</span></div>
+              <button class="btn-cart" data-name="Nkwobi" data-price="4500">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Abacha -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ndikako.jpeg" alt="Abacha African salad with dried cassava strips"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🥗</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Abacha (African Salad)</h3>
+              <p class="card-desc">Dried cassava strips with garden egg, ugba, crayfish &amp; palm oil dressing.</p>
+              <div class="card-footer"><span class="card-price">₦2,800</span><span class="card-qty">Per plate</span></div>
+              <button class="btn-cart" data-name="Abacha" data-price="2800">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Ugba -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/obono.jpeg" alt="Ugba fermented oil bean seed salad"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🫘</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Ugba Salad</h3>
+              <p class="card-desc">Fermented oil bean seeds with sliced onions &amp; crayfish. Bold umami flavour.</p>
+              <div class="card-footer"><span class="card-price">₦1,800</span><span class="card-qty">Per bowl</span></div>
+              <button class="btn-cart" data-name="Ugba Salad" data-price="1800">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Bole & Fish -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ogusi soap.jpeg" alt="Roasted plantain bole with grilled fish and pepper sauce"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍌</div>'">
+              </div>
+              <span class="card-badge">Port Harcourt 🌶️</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Bole &amp; Fish</h3>
+              <p class="card-desc">Roasted plantain with grilled fish &amp; spicy pepper sauce. Port Harcourt's soul food.</p>
+              <div class="card-footer"><span class="card-price">₦3,500</span><span class="card-qty">Per set</span></div>
+              <button class="btn-cart" data-name="Bole & Fish" data-price="3500">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Ofe Onugbu -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/owado soup.jpeg" alt="Ofe Onugbu bitter leaf soup from Igboland"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍃</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Ofe Onugbu</h3>
+              <p class="card-desc">Igbo bitter leaf soup slow-cooked with cocoyam, oxtail &amp; dried fish.</p>
+              <div class="card-footer"><span class="card-price">₦4,000</span><span class="card-qty">Per bowl</span></div>
+              <button class="btn-cart" data-name="Ofe Onugbu" data-price="4000">Add to Cart</button>
+            </div>
+          </article>
+
+          <!-- Isi Ewu -->
+          <article class="card">
+            <div class="card-img-wrap">
+              <div class="card-img">
+                <img src="./image/ofa osalla.jpeg" alt="Isi Ewu goat head pepper soup"
+                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🐐</div>'">
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Isi Ewu</h3>
+              <p class="card-desc">Seasoned goat head in rich utazi &amp; ehuru spiced sauce. A village feast staple.</p>
+              <div class="card-footer"><span class="card-price">₦5,500</span><span class="card-qty">Per serve</span></div>
+              <button class="btn-cart" data-name="Isi Ewu" data-price="5500">Add to Cart</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div><!-- /product-area -->
+  </main><!-- /main-layout -->
+
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer class="site-footer" id="contact" aria-label="Site footer">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <div class="logo-wrap" style="margin-bottom:.5rem">
+          <div class="logo-icon">MP</div>
+          <div>
+            <div class="logo-name" style="color:#fff">MaMaPut<span>Online</span></div>
+            <div class="logo-sub" style="color:rgba(255,255,255,.5)">Authentic Naija Flavours</div>
+          </div>
+        </div>
+        <p>
+          Home of authentic Nigerian delicacies, delivered fresh daily. From Mama's kitchen to your doorstep — no compromise, just flavour.
+        </p>
+        <!-- Social Icons -->
+        <div class="social-row" aria-label="Social media links">
+          <!-- Facebook -->
+          <a href="#" class="social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/></svg>
+          </a>
+          <!-- Twitter / X -->
+          <a href="#" class="social-link" aria-label="Follow us on X (Twitter)" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4l16 16M4 20 20 4" stroke="currentColor" stroke-width="2.2" fill="none"/><path d="M20 4 4 20M4 4l16 16" stroke="none"/><text x="2" y="20" font-size="15" font-weight="900" font-family="Arial">𝕏</text></svg>
+          </a>
+          <!-- WhatsApp -->
+          <a href="https://wa.me/2348000000000" class="social-link" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </a>
+          <!-- YouTube -->
+          <a href="#" class="social-link" aria-label="Watch us on YouTube" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a1a1a"/></svg>
+          </a>
+          <!-- TikTok -->
+          <a href="#" class="social-link" aria-label="Follow us on TikTok" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.71a4.85 4.85 0 0 1-1.01-.02z"/></svg>
+          </a>
+          <!-- Telegram -->
+          <a href="#" class="social-link" aria-label="Join us on Telegram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#soups">🥣 Soups</a></li>
+          <li><a href="#rice-dishes">🍛 Rice Dishes</a></li>
+          <li><a href="#swallows-sides">🍠 Swallows &amp; Sides</a></li>
+          <li><a href="#protein-treats">🍗 Proteins &amp; Snacks</a></li>
+          <li><a href="#native-delicacy">🥘 Native Delicacies</a></li>
+        </ul>
+      </div>
+
+      <!-- Support -->
+      <div class="footer-col">
+        <h4>Customer Support</h4>
+        <ul>
+          <li><a href="#">Track My Order</a></li>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Delivery Info</a></li>
+          <li><a href="#">Feedback</a></li>
+          <li><a href="#">Allergen Guide</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-col">
+        <h4>Stay in the Loop</h4>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.55);margin-bottom:.75rem;line-height:1.6">
+          Get weekly specials, new menu drops, and exclusive Naija recipes straight to your inbox.
+        </p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="your@email.com" aria-label="Email address for newsletter">
+          <button type="button">Subscribe</button>
+        </div>
+        <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:.6rem">
+          📍 Delivery available across Lagos, Abuja, Port Harcourt &amp; Benin City.
+        </p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:.85rem">
+          📞 <a href="tel:+2348000000000" style="color:rgba(255,255,255,.6)">+234 800 000 0000</a><br>
+          ✉️ <a href="mailto:hello@mamaputonline.ng" style="color:rgba(255,255,255,.6)">hello@mamaputonline.ng</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer bottom bar -->
+    <div class="footer-bottom">
+      <span>© 2026 MaMaPutOnline. All rights reserved.</span>
+      <span style="display:flex;gap:1.25rem;flex-wrap:wrap">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </span>
+      <span>Made with ❤️ for Naija food lovers</span>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile bottom bar -->
+  <div class="bottom-bar" id="bottom-bar" aria-live="polite">
+    <span class="cart-total" id="bottom-total">0 items · ₦0</span>
+    <button class="btn-order" id="btn-order">View Cart &amp; Order 🛵</button>
+  </div>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
+
+  <script>
+    /* ── Smooth scroll for anchor links ── */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const id = this.getAttribute('href');
+        if (!id || id === '#') return;
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          mobileMenu.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    /* ── Hamburger toggle ── */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    /* ── Cart state ── */
+    let cartCount = 0;
+    let cartTotal = 0;
+    const cartCountEl  = document.getElementById('cart-count');
+    const bottomTotal  = document.getElementById('bottom-total');
+    const bottomBar    = document.getElementById('bottom-bar');
+    const toast        = document.getElementById('toast');
+    let toastTimer;
+
+    function showToast(msg) {
+      toast.textContent = '🛒 ' + msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    function updateCart() {
+      cartCountEl.textContent = cartCount;
+      bottomTotal.textContent = `${cartCount} item${cartCount !== 1 ? 's' : ''} · ₦${cartTotal.toLocaleString()}`;
+    }
+
+    document.querySelectorAll('.btn-cart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name  = btn.dataset.name;
+        const price = parseInt(btn.dataset.price, 10);
+        cartCount++;
+        cartTotal += price;
+        updateCart();
+        showToast(`${name} added to cart!`);
+      });
+    });
+
+    /* ── Back to top ── */
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ── Newsletter subscribe ── */
+    document.querySelector('.newsletter-form button').addEventListener('click', function () {
+      const input = this.previousElementSibling;
+      if (!input.value || !input.value.includes('@')) {
+        showToast('Please enter a valid email!');
+        return;
+      }
+      showToast('Subscribed! 🎉 Watch your inbox.');
+      input.value = '';
+    });
+
+    console.log('MaMaPutOnline ready — Naija food on the way!');
+  </script>
+</body>
+</html>
