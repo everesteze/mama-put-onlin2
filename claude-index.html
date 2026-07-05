@@ -1,721 +1,553 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>MaMaPutOnline | Home of Authentic Nigerian Dishes</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/claude-styes.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MaMaPutOnline | Home of Authentic Nigerian Dishes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          mpRed: '#8B0000',
+          mpRedHover: '#a01515',
+          mpAmber: '#b45309',
+          mpAmberLight: '#fef3c7',
+          mpCream: '#fdf8f2',
+          mpCreamDark: '#fef0d8',
+        },
+        fontFamily: {
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  #menu-toggle:checked ~ #mobile-menu { display: flex; }
+  #menu-toggle:checked ~ label #ham-open { display: none; }
+  #menu-toggle:checked ~ label #ham-close { display: block; }
+</style>
 </head>
-<body>
+<body class="font-sans bg-mpCream text-neutral-800 leading-relaxed" id="top">
 
-  <!-- ══════════════════════════════════════════
-       ANNOUNCEMENT BANNER
-  ══════════════════════════════════════════ -->
-  <div class="announce-bar" role="banner">
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="bg-mpAmberLight text-mpRed text-center text-sm font-bold py-2 px-4 tracking-wide">
     🔥 Today's Special: <strong>20% off all Combo Orders</strong> — Use code <strong>NAIJA20</strong> at checkout! 🛵 Free delivery on orders over ₦5,000
   </div>
 
-  <!-- ══════════════════════════════════════════
-       STICKY HEADER
-  ══════════════════════════════════════════ -->
-  <header class="site-header" role="banner">
-    <!-- Top bar: Logo + Search + Cart -->
-    <div class="header-top container">
-      <!-- Logo -->
-      <a href="#" class="logo-wrap" aria-label="MaMaPutOnline home">
-        <div class="logo-icon" aria-hidden="true">MP</div>
+  <!-- STICKY HEADER -->
+  <header class="sticky top-0 z-50 w-full bg-white shadow-md">
+    <!-- Top bar -->
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4 flex-wrap px-6 py-3">
+      <a href="#top" class="flex items-center gap-3" aria-label="MaMaPutOnline home">
+        <div class="w-12 h-12 rounded-full bg-mpRed text-white flex items-center justify-center font-black text-lg shadow-sm flex-shrink-0">MP</div>
         <div>
-          <div class="logo-name">MaMaPut<span>Online</span></div>
-          <div class="logo-sub">Authentic Naija Flavours</div>
+          <div class="text-2xl font-black text-mpRed tracking-tight">MaMaPut<span class="text-mpAmber">Online</span></div>
+          <div class="text-xs text-neutral-400 -mt-1 tracking-wide">Authentic Naija Flavours</div>
         </div>
       </a>
 
-      <!-- Search -->
-      <div class="search-wrap" role="search">
+      <div class="relative flex items-center gap-2">
         <label for="site-search" class="sr-only">Search dishes</label>
-        <input
-          id="site-search"
-          type="search"
-          class="search-input"
-          placeholder="Search soups, rice, proteins…"
-          autocomplete="off"
-        >
-        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <input id="site-search" type="search" placeholder="Search soups, rice, proteins…"
+          class="w-[clamp(200px,28vw,360px)] rounded-full border-[1.5px] border-[#e5d9cc] bg-[#fff9f3] px-5 py-2 pr-11 text-sm outline-none focus:border-mpRed focus:ring-4 focus:ring-mpRed/10">
+        <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-[18px] h-[18px] text-neutral-400 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
       </div>
 
-      <!-- Cart -->
-      <button class="cart-btn" aria-label="View cart, 0 items" id="cart-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <button class="relative flex items-center gap-2 bg-mpCreamDark hover:bg-[#fde6c8] rounded-full px-4 py-2 text-sm font-semibold text-mpRed" aria-label="View cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>
         Cart
-        <span class="cart-badge" id="cart-count" aria-live="polite">0</span>
+        <span class="absolute -top-1 -right-1 bg-mpRed text-white text-[11px] font-bold w-[18px] h-[18px] rounded-full flex items-center justify-center">0</span>
       </button>
     </div>
 
-    <!-- Dark-red nav bar (desktop) -->
-    <nav class="nav-bar" aria-label="Main navigation">
-      <div class="nav-inner">
-        <div class="nav-links">
-          <a href="#soups">🥣 Soups</a>
-          <a href="#rice-dishes">🍛 Rice Dishes</a>
-          <a href="#swallows-sides">🍠 Swallows & Sides</a>
-          <a href="#protein-treats">🍗 Proteins & Snacks</a>
-          <a href="#native-delicacy">🥘 Native Delicacies</a>
-          <a href="#contact">📞 Contact Us</a>
+    <!-- Nav bar -->
+    <nav class="bg-mpRed px-6" aria-label="Main navigation">
+      <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-2 relative">
+        <div class="hidden md:flex items-center gap-1 flex-wrap">
+          <a href="#soups" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold text-[0.95rem] px-4 py-3 rounded-md whitespace-nowrap">🥣 Soups</a>
+          <a href="#rice-dishes" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold text-[0.95rem] px-4 py-3 rounded-md whitespace-nowrap">🍛 Rice Dishes</a>
+          <a href="#swallows-sides" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold text-[0.95rem] px-4 py-3 rounded-md whitespace-nowrap">🍠 Swallows & Sides</a>
+          <a href="#protein-treats" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold text-[0.95rem] px-4 py-3 rounded-md whitespace-nowrap">🍗 Proteins & Snacks</a>
+          <a href="#native-delicacy" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold text-[0.95rem] px-4 py-3 rounded-md whitespace-nowrap">🥘 Native Delicacies</a>
+          <a href="#contact" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold text-[0.95rem] px-4 py-3 rounded-md whitespace-nowrap">📞 Contact Us</a>
         </div>
-        <span class="nav-tagline">Fresh. Naija. Delicious.</span>
-        <!-- Hamburger (mobile) -->
-        <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+        <span class="hidden md:inline text-white/70 text-sm italic whitespace-nowrap">Fresh. Naija. Delicious.</span>
+
+        <!-- Pure-CSS hamburger (checkbox hack, no JS) -->
+        <input type="checkbox" id="menu-toggle" class="hidden peer">
+        <label for="menu-toggle" class="md:hidden flex flex-col gap-[5px] cursor-pointer p-2 ml-auto" aria-label="Toggle mobile menu">
+          <span id="ham-open" class="flex flex-col gap-[5px]">
+            <span class="block w-6 h-[2.5px] bg-white rounded"></span>
+            <span class="block w-6 h-[2.5px] bg-white rounded"></span>
+            <span class="block w-6 h-[2.5px] bg-white rounded"></span>
+          </span>
+          <span id="ham-close" class="hidden text-white text-2xl leading-none">&times;</span>
+        </label>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:!hidden flex-col w-full bg-mpRed pb-4 gap-1 absolute top-full left-0">
+          <a href="#soups" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold px-3 py-2.5 rounded-md block mx-6">🥣 Soups</a>
+          <a href="#rice-dishes" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold px-3 py-2.5 rounded-md block mx-6">🍛 Rice Dishes</a>
+          <a href="#swallows-sides" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold px-3 py-2.5 rounded-md block mx-6">🍠 Swallows & Sides</a>
+          <a href="#protein-treats" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold px-3 py-2.5 rounded-md block mx-6">🍗 Proteins & Snacks</a>
+          <a href="#native-delicacy" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold px-3 py-2.5 rounded-md block mx-6">🥘 Native Delicacies</a>
+          <a href="#contact" class="text-white/90 hover:bg-white/15 hover:text-amber-200 font-semibold px-3 py-2.5 rounded-md block mx-6">📞 Contact Us</a>
+        </div>
       </div>
     </nav>
-
-    <!-- Mobile menu -->
-    <div class="mobile-menu" id="mobile-menu" role="menu">
-      <a href="#soups" role="menuitem">🥣 Soups</a>
-      <a href="#rice-dishes" role="menuitem">🍛 Rice Dishes</a>
-      <a href="#swallows-sides" role="menuitem">🍠 Swallows & Sides</a>
-      <a href="#protein-treats" role="menuitem">🍗 Proteins & Snacks</a>
-      <a href="#native-delicacy" role="menuitem">🥘 Native Delicacies</a>
-      <a href="#contact" role="menuitem">📞 Contact Us</a>
-    </div>
   </header>
 
-
-  <!-- ══════════════════════════════════════════
-       HERO SECTION
-  ══════════════════════════════════════════ -->
-  <section class="hero" aria-label="Welcome section">
-    <div class="hero-inner">
-      <!-- Left: text -->
-      <div class="hero-text">
-        <div class="hero-eyebrow">🍽️ Fresh Daily · No Preservatives</div>
-        <h1 class="hero-heading">
-          <span class="accent">Taste of Home</span><br>
+  <!-- HERO -->
+  <section class="bg-gradient-to-br from-orange-50 via-amber-100 to-amber-200/60 px-6 py-14 md:py-16" aria-label="Welcome section">
+    <div class="max-w-7xl mx-auto flex items-center gap-12 flex-wrap">
+      <div class="flex-1 min-w-[340px]">
+        <div class="inline-flex items-center gap-2 bg-mpRed/10 text-mpRed text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wide mb-5">
+          🍽️ Fresh Daily · No Preservatives
+        </div>
+        <h1 class="text-4xl md:text-6xl font-black leading-tight text-neutral-900 mb-5">
+          <span class="bg-gradient-to-r from-mpRed to-mpAmber bg-clip-text text-transparent">Taste of Home</span><br>
           Authentic Nigerian<br>Delicacies, Delivered.
         </h1>
-        <p class="hero-desc">
+        <p class="text-base md:text-lg text-neutral-600 max-w-md mb-8 leading-relaxed">
           Craving that rich Egusi, smoky Jollof, or spicy Nkwobi? Get the real taste of home — fresh from the MaMaPutOnline kitchen straight to your doorstep.
         </p>
-        <a href="#soups" class="hero-cta">Order Now — Satisfy Cravings! 🛵</a>
-        <div class="hero-meta">
+        <a href="#soups" class="inline-block bg-mpRed hover:bg-mpRedHover text-white font-extrabold px-8 py-3.5 rounded-full shadow-[0_6px_20px_rgba(139,0,0,0.35)] hover:-translate-y-0.5 transition">
+          Order Now — Satisfy Cravings! 🛵
+        </a>
+        <div class="flex flex-wrap gap-5 mt-6 text-sm text-neutral-600">
           <span>⭐ 4.9 (500+ reviews)</span>
           <span>🚚 Free delivery over ₦5,000</span>
           <span>⏱️ 30–45 min delivery</span>
         </div>
       </div>
 
-      <!-- Right: image -->
-      <div class="hero-image-wrap">
-        <img
-          src="./image/egusi 1.jpeg"
-          alt="Steaming bowl of Egusi soup with assorted meat"
-          onerror="this.src='https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg?auto=compress&cs=tinysrgb&w=600'"
-        >
+      <div class="flex-1 min-w-[300px] max-w-[500px]">
+        <img src="./image/egusi 1.jpeg" alt="Steaming bowl of Egusi soup with assorted meat"
+          class="w-full h-[260px] md:h-[400px] object-cover rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-500">
       </div>
     </div>
   </section>
 
+  <!-- MAIN LAYOUT -->
+  <main class="max-w-7xl mx-auto flex gap-8 items-start px-6 py-10 md:py-14 flex-col md:flex-row" id="main-content">
 
-  <!-- ══════════════════════════════════════════
-       MAIN CONTENT: SIDE PANEL + PRODUCTS
-  ══════════════════════════════════════════ -->
-  <main class="main-layout" id="main-content">
-
-    <!-- ── SIDE PANEL ── -->
-    <aside class="side-panel" aria-label="Menu categories">
-      <h2>📌 Menu Categories</h2>
-      <ul class="side-nav" role="list">
-        <li>
-          <a href="#soups">
-            <span class="emoji">🥣</span>
-            Soups (Egusi, Ogbono, Ora+)
-          </a>
-        </li>
-        <li>
-          <a href="#rice-dishes">
-            <span class="emoji">🍛</span>
-            Rice Specials (Jollof, Fried)
-          </a>
-        </li>
-        <li>
-          <a href="#swallows-sides">
-            <span class="emoji">🍠</span>
-            Swallows &amp; Sides
-          </a>
-        </li>
-        <li>
-          <a href="#protein-treats">
-            <span class="emoji">🍗</span>
-            Proteins &amp; Snacks
-          </a>
-        </li>
-        <li>
-          <a href="#native-delicacy">
-            <span class="emoji">🥘</span>
-            Native Delicacies
-          </a>
-        </li>
+    <!-- SIDE PANEL -->
+    <aside class="w-full md:w-[260px] flex-shrink-0 bg-white rounded-2xl p-6 shadow-sm border-[1.5px] border-[#f0e4d4] md:sticky md:top-[90px]" aria-label="Menu categories">
+      <h2 class="text-sm font-extrabold text-mpRed uppercase tracking-wide pb-3 border-b-2 border-mpAmberLight mb-4">📌 Menu Categories</h2>
+      <ul class="space-y-1">
+        <li><a href="#soups" class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-medium text-neutral-600 hover:bg-amber-100 hover:text-mpRed"><span class="w-6 text-lg flex-shrink-0">🥣</span>Soups (Egusi, Ogbono, Ora+)</a></li>
+        <li><a href="#rice-dishes" class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-medium text-neutral-600 hover:bg-amber-100 hover:text-mpRed"><span class="w-6 text-lg flex-shrink-0">🍛</span>Rice Specials (Jollof, Fried)</a></li>
+        <li><a href="#swallows-sides" class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-medium text-neutral-600 hover:bg-amber-100 hover:text-mpRed"><span class="w-6 text-lg flex-shrink-0">🍠</span>Swallows &amp; Sides</a></li>
+        <li><a href="#protein-treats" class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-medium text-neutral-600 hover:bg-amber-100 hover:text-mpRed"><span class="w-6 text-lg flex-shrink-0">🍗</span>Proteins &amp; Snacks</a></li>
+        <li><a href="#native-delicacy" class="flex items-center gap-2 px-3 py-2.5 rounded-md text-sm font-medium text-neutral-600 hover:bg-amber-100 hover:text-mpRed"><span class="w-6 text-lg flex-shrink-0">🥘</span>Native Delicacies</a></li>
       </ul>
 
-      <div class="side-offer">
-        <div class="offer-badge">
+      <div class="mt-6 pt-4 border-t-[1.5px] border-mpAmberLight">
+        <div class="bg-gradient-to-br from-mpRed to-[#c0392b] text-white rounded-md px-4 py-3 text-sm font-bold leading-relaxed shadow-[0_4px_12px_rgba(139,0,0,0.25)]">
           🔥 20% OFF Combo Orders!<br>
-          <span style="font-weight:400;font-size:.82rem;opacity:.9">Use code <strong>NAIJA20</strong></span>
+          <span class="font-normal text-[0.82rem] opacity-90">Use code <strong>NAIJA20</strong></span>
         </div>
-        <p style="font-size:.8rem;color:#888;margin-top:.85rem;font-style:italic;">
-          ⭐ Tap any product card to add it to your cart.
-        </p>
+        <p class="text-xs text-neutral-400 mt-3 italic">⭐ Every dish below can be added to your order at checkout.</p>
       </div>
     </aside>
 
-    <!-- ── PRODUCT AREA ── -->
-    <div class="product-area">
+    <!-- PRODUCT AREA -->
+    <div class="flex-1 min-w-0 w-full">
 
-      <!-- ─────────────────────────
-           ROW 1 · SIGNATURE SOUPS
-      ───────────────────────── -->
-      <section id="soups" class="product-section" aria-labelledby="heading-soups">
-        <div class="section-head">
-          <div class="bar" aria-hidden="true"></div>
-          <h2 id="heading-soups">🥣 Signature Soups</h2>
+      <!-- SOUPS -->
+      <section id="soups" class="mb-14 scroll-mt-24" aria-labelledby="heading-soups">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-[5px] h-7 bg-mpRed rounded"></div>
+          <h2 id="heading-soups" class="text-2xl font-black text-neutral-900">🥣 Signature Soups</h2>
         </div>
-        <div class="product-grid">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
 
-          <!-- Egusi Soup -->
-          <article class="card" role="article">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/egusi 1.jpeg" alt="Rich Egusi soup with assorted meat and leafy vegetables"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍲</div>'">
-              </div>
-              <span class="card-badge">Best Seller</span>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="relative h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/egusi 1.jpeg" alt="Rich Egusi soup with assorted meat and leafy vegetables" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-2.5 left-2.5 bg-mpRed text-white text-[0.7rem] font-bold px-2.5 py-1 rounded-full">Best Seller</span>
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Egusi Soup</h3>
-              <p class="card-desc">Rich melon seed soup with assorted meat &amp; leafy vegetables. A true Naija classic.</p>
-              <div class="card-footer">
-                <span class="card-price">₦3,500</span>
-                <span class="card-qty">1 plate</span>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Egusi Soup</h3>
+              <p class="text-sm text-neutral-400 flex-1">Rich melon seed soup with assorted meat &amp; leafy vegetables. A true Naija classic.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦3,500</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">1 plate</span>
               </div>
-              <button class="btn-cart" data-name="Egusi Soup" data-price="3500">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
-          <!-- Ewedu Soup -->
-          <article class="card" role="article">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/amala soup.jpeg" alt="Ewedu draw soup served with jute leaves"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🥬</div>'">
-              </div>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/amala soup.jpeg" alt="Ewedu draw soup served with jute leaves" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Ewedu Soup</h3>
-              <p class="card-desc">Draw soup with jute leaves, the classic companion of golden amala.</p>
-              <div class="card-footer">
-                <span class="card-price">₦2,800</span>
-                <span class="card-qty">500 ml</span>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Ewedu Soup</h3>
+              <p class="text-sm text-neutral-400 flex-1">Draw soup with jute leaves, the classic companion of golden amala.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦2,800</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">500 ml</span>
               </div>
-              <button class="btn-cart" data-name="Ewedu Soup" data-price="2800">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
-          <!-- Ora Soup -->
-          <article class="card" role="article">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/ofa eda 1.jpeg" alt="Ora soup with ugu leaves, thick and aromatic"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🌿</div>'">
-              </div>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/ofa eda 1.jpeg" alt="Ora soup with ugu leaves, thick and aromatic" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Ora Soup</h3>
-              <p class="card-desc">Ugu / ora leaves, thick and aromatic, full of protein and bold Edo flavour.</p>
-              <div class="card-footer">
-                <span class="card-price">₦3,200</span>
-                <span class="card-qty">Per serving</span>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Ora Soup</h3>
+              <p class="text-sm text-neutral-400 flex-1">Ugu / ora leaves, thick and aromatic, full of protein and bold Edo flavour.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦3,200</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per serving</span>
               </div>
-              <button class="btn-cart" data-name="Ora Soup" data-price="3200">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
-          <!-- Edikaikong -->
-          <article class="card" role="article">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/edikako 1.jpeg" alt="Edikaikong soup with waterleaf, pumpkin, fresh fish and periwinkle"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🫘</div>'">
-              </div>
-              <span class="card-badge">Calabar Fav</span>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="relative h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/edikako 1.jpeg" alt="Edikaikong soup with waterleaf, pumpkin, fresh fish and periwinkle" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-2.5 left-2.5 bg-mpRed text-white text-[0.7rem] font-bold px-2.5 py-1 rounded-full">Calabar Fav</span>
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Edikaikong</h3>
-              <p class="card-desc">Waterleaf &amp; pumpkin, fresh fish &amp; periwinkle. Calabar's pride.</p>
-              <div class="card-footer">
-                <span class="card-price">₦3,800</span>
-                <span class="card-qty">Rich combo</span>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Edikaikong</h3>
+              <p class="text-sm text-neutral-400 flex-1">Waterleaf &amp; pumpkin, fresh fish &amp; periwinkle. Calabar's pride.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦3,800</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Rich combo</span>
               </div>
-              <button class="btn-cart" data-name="Edikaikong" data-price="3800">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
-          <!-- Okazi Soup -->
-          <article class="card" role="article">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/bitter leaf 1.jpeg" alt="Okazi soup, afang style with wild spinach"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍃</div>'">
-              </div>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/bitter leaf 1.jpeg" alt="Okazi soup, afang style with wild spinach" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Okazi Soup</h3>
-              <p class="card-desc">Afang style, wild spinach, bold savory flavour. Perfect with any swallow.</p>
-              <div class="card-footer">
-                <span class="card-price">₦3,500</span>
-                <span class="card-qty">Full portion</span>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Okazi Soup</h3>
+              <p class="text-sm text-neutral-400 flex-1">Afang style, wild spinach, bold savory flavour. Perfect with any swallow.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦3,500</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Full portion</span>
               </div>
-              <button class="btn-cart" data-name="Okazi Soup" data-price="3500">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
-          <!-- Ogbono Soup -->
-          <article class="card" role="article">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/obono1.jpeg" alt="Ogbono draw soup with oxtail and stockfish"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍵</div>'">
-              </div>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/obono1.jpeg" alt="Ogbono draw soup with oxtail and stockfish" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Ogbono Soup</h3>
-              <p class="card-desc">Draw soup with ogbono seeds, oxtail &amp; stockfish. Available spicy on request.</p>
-              <div class="card-footer">
-                <span class="card-price">₦3,600</span>
-                <span class="card-qty">Spicy option</span>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Ogbono Soup</h3>
+              <p class="text-sm text-neutral-400 flex-1">Draw soup with ogbono seeds, oxtail &amp; stockfish. Available spicy on request.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦3,600</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Spicy option</span>
               </div>
-              <button class="btn-cart" data-name="Ogbono Soup" data-price="3600">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
         </div>
       </section>
 
-      <!-- ─────────────────────────
-           ROW 2 · RICE & CLASSICS
-      ───────────────────────── -->
-      <section id="rice-dishes" class="product-section" aria-labelledby="heading-rice">
-        <div class="section-head">
-          <div class="bar" aria-hidden="true"></div>
-          <h2 id="heading-rice">🍛 Rice &amp; Comfort Classics</h2>
+      <!-- RICE & CLASSICS -->
+      <section id="rice-dishes" class="mb-14 scroll-mt-24" aria-labelledby="heading-rice">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-[5px] h-7 bg-mpRed rounded"></div>
+          <h2 id="heading-rice" class="text-2xl font-black text-neutral-900">🍛 Rice &amp; Comfort Classics</h2>
         </div>
-        <div class="product-grid">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
 
-          <!-- Jollof Rice -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/jelof rice.jpeg" alt="Party Jollof rice, smoky with fried plantain"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍛</div>'">
-              </div>
-              <span class="card-badge">🔥 Party Style</span>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="relative h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/jelof rice.jpeg" alt="Party Jollof rice, smoky with fried plantain" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-2.5 left-2.5 bg-mpRed text-white text-[0.7rem] font-bold px-2.5 py-1 rounded-full">🔥 Party Style</span>
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Jollof Rice</h3>
-              <p class="card-desc">Smoky party-style jollof with fried plantain. The one dish that unites us all.</p>
-              <div class="card-footer">
-                <span class="card-price">₦2,500</span>
-                <span class="card-qty">Per plate</span>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Jollof Rice</h3>
+              <p class="text-sm text-neutral-400 flex-1">Smoky party-style jollof with fried plantain. The one dish that unites us all.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦2,500</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per plate</span>
               </div>
-              <button class="btn-cart" data-name="Jollof Rice" data-price="2500">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
-          <!-- Fried Rice -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/fried rice 1.jpeg" alt="Nigerian fried rice with vegetables, liver and shrimp"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍚</div>'">
-              </div>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/fried rice 1.jpeg" alt="Nigerian fried rice with vegetables, liver and shrimp" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Fried Rice</h3>
-              <p class="card-desc">Mixed veg, liver, shrimp — fragrant and colourful. Great with chicken.</p>
-              <div class="card-footer">
-                <span class="card-price">₦3,000</span>
-                <span class="card-qty">Large plate</span>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Fried Rice</h3>
+              <p class="text-sm text-neutral-400 flex-1">Mixed veg, liver, shrimp — fragrant and colourful. Great with chicken.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦3,000</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Large plate</span>
               </div>
-              <button class="btn-cart" data-name="Fried Rice" data-price="3000">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
-          <!-- Beans & Plantain -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/beans 1.jpeg" alt="Porridge beans with fried ripe plantain"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🫘</div>'">
-              </div>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/beans 1.jpeg" alt="Porridge beans with fried ripe plantain" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Beans &amp; Plantain</h3>
-              <p class="card-desc">Creamy porridge beans paired with sweet ripe dodo — the combo of the gods.</p>
-              <div class="card-footer">
-                <span class="card-price">₦2,200</span>
-                <span class="card-qty">Per serve</span>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Beans &amp; Plantain</h3>
+              <p class="text-sm text-neutral-400 flex-1">Creamy porridge beans paired with sweet ripe dodo — the combo of the gods.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦2,200</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per serve</span>
               </div>
-              <button class="btn-cart" data-name="Beans & Plantain" data-price="2200">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
-          <!-- Fried Plantain -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/fried plantain 1.jpeg" alt="Crispy fried ripe plantain slices"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍌</div>'">
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/fried plantain 1.jpeg" alt="Crispy fried ripe plantain slices" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Fried Plantain</h3>
+              <p class="text-sm text-neutral-400 flex-1">Sweet ripe dodo, golden and crispy outside, soft inside. Perfect side.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦1,200</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per order</span>
               </div>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Fried Plantain</h3>
-              <p class="card-desc">Sweet ripe dodo, golden and crispy outside, soft inside. Perfect side.</p>
-              <div class="card-footer">
-                <span class="card-price">₦1,200</span>
-                <span class="card-qty">Per order</span>
-              </div>
-              <button class="btn-cart" data-name="Fried Plantain" data-price="1200">Add to Cart</button>
-            </div>
-          </article>
-
-        </div>
-      </section>
-      
-      <!-- ─────────────────────────
-           ROW 3· NATIVE DELICACIES
-      ───────────────────────── -->
-      <section id="native-delicacy" class="product-section" aria-labelledby="heading-native">
-        <div class="section-head">
-          <div class="bar" aria-hidden="true"></div>
-          <h2 id="heading-native">🥘 Native Delicacies</h2>
-        </div>
-        <div class="product-grid">
-
-          <!-- Nkwobi -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/nkgubi.jpeg" alt="Nkwobi spicy cow foot in palm nut sauce"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🦶</div>'">
-              </div>
-              <span class="card-badge">Fan Fav</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Nkwobi</h3>
-              <p class="card-desc">Spicy cow foot in thick palm nut sauce. A crowd-pleaser at every owambe.</p>
-              <div class="card-footer"><span class="card-price">₦4,500</span><span class="card-qty">Per pot</span></div>
-              <button class="btn-cart" data-name="Nkwobi" data-price="4500">Add to Cart</button>
-            </div>
-          </article>
-
-          <!-- Abacha -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/abacha 1.jpeg" alt="Abacha African salad with dried cassava strips"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🥗</div>'">
-              </div>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Abacha (African Salad)</h3>
-              <p class="card-desc">Dried cassava strips with garden egg, ugba, crayfish &amp; palm oil dressing.</p>
-              <div class="card-footer"><span class="card-price">₦2,800</span><span class="card-qty">Per plate</span></div>
-              <button class="btn-cart" data-name="Abacha" data-price="2800">Add to Cart</button>
-            </div>
-          </article>
-
-          <!-- Ugba -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/upa.jpeg" alt="Ugba fermented oil bean seed salad"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🫘</div>'">
-              </div>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Ugba Salad</h3>
-              <p class="card-desc">Fermented oil bean seeds with sliced onions &amp; crayfish. Bold umami flavour.</p>
-              <div class="card-footer"><span class="card-price">₦1,800</span><span class="card-qty">Per bowl</span></div>
-              <button class="btn-cart" data-name="Ugba Salad" data-price="1800">Add to Cart</button>
-            </div>
-          </article>
-
-          <!-- Bole & Fish -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/fish.jpeg" alt="Roasted plantain bole with grilled fish and pepper sauce"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍌</div>'">
-              </div>
-              <span class="card-badge">Port Harcourt 🌶️</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Bole &amp; Fish</h3>
-              <p class="card-desc">Roasted plantain with grilled fish &amp; spicy pepper sauce. Port Harcourt's soul food.</p>
-              <div class="card-footer"><span class="card-price">₦3,500</span><span class="card-qty">Per set</span></div>
-              <button class="btn-cart" data-name="Bole & Fish" data-price="3500">Add to Cart</button>
-            </div>
-          </article>
-
-          <!-- Ofe Onugbu -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/bitter leaf 1.jpeg" alt="Ofe Onugbu bitter leaf soup from Igboland"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🍃</div>'">
-              </div>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Ofe Onugbu</h3>
-              <p class="card-desc">Igbo bitter leaf soup slow-cooked with cocoyam, oxtail &amp; dried fish.</p>
-              <div class="card-footer"><span class="card-price">₦4,000</span><span class="card-qty">Per bowl</span></div>
-              <button class="btn-cart" data-name="Ofe Onugbu" data-price="4000">Add to Cart</button>
-            </div>
-          </article>
-
-          <!-- Isi Ewu -->
-          <article class="card">
-            <div class="card-img-wrap">
-              <div class="card-img">
-                <img src="../image/ise ewu.jpeg" alt="Isi Ewu goat head pepper soup"
-                  onerror="this.parentElement.innerHTML='<div class=card-img-placeholder>🐐</div>'">
-              </div>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Isi Ewu</h3>
-              <p class="card-desc">Seasoned goat head in rich utazi &amp; ehuru spiced sauce. A village feast staple.</p>
-              <div class="card-footer"><span class="card-price">₦5,500</span><span class="card-qty">Per serve</span></div>
-              <button class="btn-cart" data-name="Isi Ewu" data-price="5500">Add to Cart</button>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
             </div>
           </article>
 
         </div>
       </section>
 
-    </div><!-- /product-area -->
-  </main><!-- /main-layout -->
+      <!-- NATIVE DELICACIES -->
+      <section id="native-delicacy" class="mb-14 scroll-mt-24" aria-labelledby="heading-native">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-[5px] h-7 bg-mpRed rounded"></div>
+          <h2 id="heading-native" class="text-2xl font-black text-neutral-900">🥘 Native Delicacies</h2>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-5">
 
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="relative h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/nkgubi.jpeg" alt="Nkwobi spicy cow foot in palm nut sauce" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-2.5 left-2.5 bg-mpRed text-white text-[0.7rem] font-bold px-2.5 py-1 rounded-full">Fan Fav</span>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Nkwobi</h3>
+              <p class="text-sm text-neutral-400 flex-1">Spicy cow foot in thick palm nut sauce. A crowd-pleaser at every owambe.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦4,500</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per pot</span>
+              </div>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
+            </div>
+          </article>
 
-  <!-- ══════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════ -->
-  <footer class="site-footer" id="contact" aria-label="Site footer">
-    <div class="footer-grid">
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/abacha 1.jpeg" alt="Abacha African salad with dried cassava strips" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Abacha (African Salad)</h3>
+              <p class="text-sm text-neutral-400 flex-1">Dried cassava strips with garden egg, ugba, crayfish &amp; palm oil dressing.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦2,800</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per plate</span>
+              </div>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
+            </div>
+          </article>
 
-      <!-- Brand -->
-      <div class="footer-brand">
-        <div class="logo-wrap" style="margin-bottom:.5rem">
-          <div class="logo-icon">MP</div>
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/upa.jpeg" alt="Ugba fermented oil bean seed salad" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Ugba Salad</h3>
+              <p class="text-sm text-neutral-400 flex-1">Fermented oil bean seeds with sliced onions &amp; crayfish. Bold umami flavour.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦1,800</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per bowl</span>
+              </div>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="relative h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/fish.jpeg" alt="Roasted plantain bole with grilled fish and pepper sauce" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+              <span class="absolute top-2.5 left-2.5 bg-mpRed text-white text-[0.7rem] font-bold px-2.5 py-1 rounded-full">Port Harcourt 🌶️</span>
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Bole &amp; Fish</h3>
+              <p class="text-sm text-neutral-400 flex-1">Roasted plantain with grilled fish &amp; spicy pepper sauce. Port Harcourt's soul food.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦3,500</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per set</span>
+              </div>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/bitter leaf 1.jpeg" alt="Ofe Onugbu bitter leaf soup from Igboland" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Ofe Onugbu</h3>
+              <p class="text-sm text-neutral-400 flex-1">Igbo bitter leaf soup slow-cooked with cocoyam, oxtail &amp; dried fish.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦4,000</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per bowl</span>
+              </div>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl overflow-hidden shadow-sm border-[1.5px] border-[#f0e4d4] flex flex-col hover:-translate-y-1 hover:shadow-lg transition">
+            <div class="h-[180px] bg-mpCreamDark overflow-hidden">
+              <img src="../image/ise ewu.jpeg" alt="Isi Ewu goat head pepper soup" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+            </div>
+            <div class="p-4 flex flex-col flex-1">
+              <h3 class="font-extrabold text-neutral-900 mb-1">Isi Ewu</h3>
+              <p class="text-sm text-neutral-400 flex-1">Seasoned goat head in rich utazi &amp; ehuru spiced sauce. A village feast staple.</p>
+              <div class="flex items-center justify-between mt-3">
+                <span class="text-lg font-black text-mpRed">₦5,500</span>
+                <span class="text-xs text-neutral-400 bg-[#f5f0ea] px-2 py-1 rounded-full">Per serve</span>
+              </div>
+              <button class="mt-3 w-full bg-mpAmber hover:bg-[#92400e] text-white font-bold text-sm py-2.5 rounded-full">Add to Cart</button>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-neutral-900 text-white/80 px-6 pt-14 pb-0" id="contact" aria-label="Site footer">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/10">
+
+      <div class="lg:col-span-1 md:col-span-2">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-12 h-12 rounded-full bg-mpRed text-white flex items-center justify-center font-black text-lg flex-shrink-0">MP</div>
           <div>
-            <div class="logo-name" style="color:#fff">MaMaPut<span>Online</span></div>
-            <div class="logo-sub" style="color:rgba(255,255,255,.5)">Authentic Naija Flavours</div>
+            <div class="text-2xl font-black text-white">MaMaPut<span class="text-amber-400">Online</span></div>
+            <div class="text-xs text-white/50">Authentic Naija Flavours</div>
           </div>
         </div>
-        <p>
+        <p class="text-sm text-white/60 leading-relaxed my-4 max-w-[260px]">
           Home of authentic Nigerian delicacies, delivered fresh daily. From Mama's kitchen to your doorstep — no compromise, just flavour.
         </p>
-        <!-- Social Icons -->
-        <div class="social-row" aria-label="Social media links">
-          <!-- Facebook -->
-          <a href="#" class="social-link" aria-label="Follow us on Facebook" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        <div class="flex gap-2.5 flex-wrap mt-2" aria-label="Social media links">
+          <a href="#" class="w-[38px] h-[38px] rounded-full bg-white/10 hover:bg-mpRed hover:-translate-y-1 transition flex items-center justify-center text-white" aria-label="Follow us on Facebook" target="_blank" rel="noopener">
+            <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
-          <!-- Instagram -->
-          <a href="#" class="social-link" aria-label="Follow us on Instagram" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="none" stroke="currentColor" stroke-width="2"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2"/></svg>
+          <a href="#" class="w-[38px] h-[38px] rounded-full bg-white/10 hover:bg-mpRed hover:-translate-y-1 transition flex items-center justify-center text-white" aria-label="Follow us on Instagram" target="_blank" rel="noopener">
+            <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
-          <!-- Twitter / X -->
-          <a href="#" class="social-link" aria-label="Follow us on X (Twitter)" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" xmlns="http://www.everesteze7"><path d="M4 4l16 16M4 20 20 4" stroke="currentColor" stroke-width="2.2" fill="none"/><path d="M20 4 4 20M4 4l16 16" stroke="none"/><text x="2" y="20" font-size="15" font-weight="900" font-family="Arial">𝕏</text></svg>
+          <a href="#" class="w-[38px] h-[38px] rounded-full bg-white/10 hover:bg-mpRed hover:-translate-y-1 transition flex items-center justify-center text-white font-black" aria-label="Follow us on X (Twitter)" target="_blank" rel="noopener">𝕏</a>
+          <a href="https://wa.me/2347062278167" class="w-[38px] h-[38px] rounded-full bg-white/10 hover:bg-mpRed hover:-translate-y-1 transition flex items-center justify-center text-white" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+            <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           </a>
-          <!-- WhatsApp -->
-          <a href="https://wa.me/2347062278167" class="social-link" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <a href="#" class="w-[38px] h-[38px] rounded-full bg-white/10 hover:bg-mpRed hover:-translate-y-1 transition flex items-center justify-center text-white" aria-label="Watch us on YouTube" target="_blank" rel="noopener">
+            <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a1a1a"/></svg>
           </a>
-          <!-- YouTube -->
-          <a href="#" class="social-link" aria-label="Watch us on YouTube" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#1a1a1a"/></svg>
+          <a href="#" class="w-[38px] h-[38px] rounded-full bg-white/10 hover:bg-mpRed hover:-translate-y-1 transition flex items-center justify-center text-white" aria-label="Follow us on TikTok" target="_blank" rel="noopener">
+            <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.71a4.85 4.85 0 0 1-1.01-.02z"/></svg>
           </a>
-          <!-- TikTok -->
-          <a href="#" class="social-link" aria-label="Follow us on TikTok" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.71a4.85 4.85 0 0 1-1.01-.02z"/></svg>
-          </a>
-          <!-- Telegram -->
-          <a href="#" class="social-link" aria-label="Join us on Telegram" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22 2-7 20-4-9-9-4 20-7z"/><path d="M22 2 11 13"/></svg>
+          <a href="#" class="w-[38px] h-[38px] rounded-full bg-white/10 hover:bg-mpRed hover:-translate-y-1 transition flex items-center justify-center text-white" aria-label="Join us on Telegram" target="_blank" rel="noopener">
+            <svg class="w-[18px] h-[18px] fill-current" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
           </a>
         </div>
       </div>
 
-      <!-- Quick Links -->
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#soups">🥣 Soups</a></li>
-          <li><a href="#rice-dishes">🍛 Rice Dishes</a></li>
-          <li><a href="#swallows-sides">🍠 Swallows &amp; Sides</a></li>
-          <li><a href="#protein-treats">🍗 Proteins &amp; Snacks</a></li>
-          <li><a href="#native-delicacy">🥘 Native Delicacies</a></li>
+      <div>
+        <h4 class="text-sm font-extrabold uppercase tracking-wide text-white mb-5">Quick Links</h4>
+        <ul class="space-y-2.5 text-sm text-white/60">
+          <li><a href="#soups" class="hover:text-amber-400">🥣 Soups</a></li>
+          <li><a href="#rice-dishes" class="hover:text-amber-400">🍛 Rice Dishes</a></li>
+          <li><a href="#swallows-sides" class="hover:text-amber-400">🍠 Swallows &amp; Sides</a></li>
+          <li><a href="#protein-treats" class="hover:text-amber-400">🍗 Proteins &amp; Snacks</a></li>
+          <li><a href="#native-delicacy" class="hover:text-amber-400">🥘 Native Delicacies</a></li>
         </ul>
       </div>
 
-      <!-- Support -->
-      <div class="footer-col">
-        <h4>Customer Support</h4>
-        <ul>
-          <li><a href="#">Track My Order</a></li>
-          <li><a href="#">FAQs</a></li>
-          <li><a href="#">Refund Policy</a></li>
-          <li><a href="#">Delivery Info</a></li>
-          <li><a href="#">Feedback</a></li>
-          <li><a href="#">Allergen Guide</a></li>
+      <div>
+        <h4 class="text-sm font-extrabold uppercase tracking-wide text-white mb-5">Customer Support</h4>
+        <ul class="space-y-2.5 text-sm text-white/60">
+          <li><a href="#" class="hover:text-amber-400">Track My Order</a></li>
+          <li><a href="#" class="hover:text-amber-400">FAQs</a></li>
+          <li><a href="#" class="hover:text-amber-400">Refund Policy</a></li>
+          <li><a href="#" class="hover:text-amber-400">Delivery Info</a></li>
+          <li><a href="#" class="hover:text-amber-400">Feedback</a></li>
+          <li><a href="#" class="hover:text-amber-400">Allergen Guide</a></li>
         </ul>
       </div>
 
-       <!-- Newsletter -->
-      <div class="footer-col">
-        <h4>Stay in the Loop</h4>
-        <p style="font-size:.85rem;color:rgba(255,255,255,.55);margin-bottom:.75rem;line-height:1.6">
+      <div>
+        <h4 class="text-sm font-extrabold uppercase tracking-wide text-white mb-5">Stay in the Loop</h4>
+        <p class="text-sm text-white/55 mb-3 leading-relaxed">
           Get weekly specials, new menu drops, and exclusive Naija recipes straight to your inbox.
         </p>
-        <div class="newsletter-form">
-          <input type="email" placeholder="your@email.com" aria-label="Email address for newsletter">
-          <button type="button">Subscribe</button>
+        <div class="flex gap-2">
+          <input type="email" placeholder="your@email.com" aria-label="Email address for newsletter"
+            class="flex-1 rounded-full border-[1.5px] border-white/20 bg-white/[0.08] px-4 py-2.5 text-sm text-white placeholder-white/40 outline-none focus:border-mpRed">
+          <button type="button" class="bg-mpRed hover:bg-mpRedHover text-white rounded-full px-4 py-2.5 text-sm font-bold whitespace-nowrap">Subscribe</button>
         </div>
-        <p style="font-size:.75rem;color:rgba(255,255,255,.35);margin-top:.6rem">
-          📍 Delivery available across Lagos, Abuja, Port Harcourt &amp; Benin City.
-        </p>
-        <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:.85rem">
-          📞 <a href="tel:+2348000000000" style="color:rgba(255,255,255,.6)">+234 800 000 0000</a><br>
-          ✉️ <a href="mailto:hello@mamaputonline.ng" style="color:rgba(255,255,255,.6)">hello@mamaputonline.ng</a>
+        <p class="text-xs text-white/35 mt-2.5">📍 Delivery available across Lagos, Abuja, Port Harcourt &amp; Benin City.</p>
+        <p class="text-sm text-white/50 mt-3">
+          📞 <a href="tel:+2348000000000" class="text-white/60 hover:text-amber-400">+234 800 000 0000</a><br>
+          ✉️ <a href="mailto:hello@mamaputonline.ng" class="text-white/60 hover:text-amber-400">hello@mamaputonline.ng</a>
         </p>
       </div>
     </div>
 
-    <!-- Footer bottom bar -->
-    <div class="footer-bottom">
+    <div class="max-w-7xl mx-auto flex items-center justify-between flex-wrap gap-3 py-5 text-xs text-white/40">
       <span>© 2026 MaMaPutOnline. All rights reserved.</span>
-      <span style="display:flex;gap:1.25rem;flex-wrap:wrap">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
+      <span class="flex gap-5 flex-wrap">
+        <a href="#" class="hover:text-amber-400">Privacy Policy</a>
+        <a href="#" class="hover:text-amber-400">Terms of Service</a>
+        <a href="#" class="hover:text-amber-400">Cookie Policy</a>
       </span>
       <span>Made with ❤️ for Naija food lovers</span>
     </div>
   </footer>
 
   <!-- Sticky mobile bottom bar -->
-  <div class="bottom-bar" id="bottom-bar" aria-live="polite">
-    <span class="cart-total" id="bottom-total">0 items · ₦0</span>
-    <button class="btn-order" id="btn-order">View Cart &amp; Order 🛵</button>
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t-[1.5px] border-[#f0e4d4] px-5 py-3 flex items-center justify-between shadow-[0_-4px_16px_rgba(0,0,0,0.1)]">
+    <span class="text-sm font-bold text-neutral-900">0 items · ₦0</span>
+    <a href="#contact" class="bg-mpRed hover:bg-mpRedHover text-white font-extrabold text-sm px-7 py-2.5 rounded-full shadow-[0_4px_14px_rgba(139,0,0,0.35)]">View Cart &amp; Order 🛵</a>
   </div>
 
   <!-- Back to top -->
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-      <path d="M18 15l-6-6-6 6"/>
-    </svg>
-  </button>
+  <a href="#top" aria-label="Back to top"
+    class="fixed bottom-20 md:bottom-20 right-6 w-11 h-11 bg-mpRed hover:bg-mpRedHover text-white rounded-full flex items-center justify-center shadow-lg z-30">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </a>
 
-  <!-- Toast notification -->
-  <div class="toast" id="toast" role="alert" aria-live="assertive"></div>
-
-  <script>
-    /* ── Smooth scroll for anchor links ── */
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const id = this.getAttribute('href');
-        if (!id || id === '#') return;
-        const target = document.querySelector(id);
-        if (target) {
-          e.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          mobileMenu.classList.remove('open');
-          hamburger.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-
-    /* ── Hamburger toggle ── */
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', isOpen);
-    });
-
-    /* ── Cart state ── */
-    let cartCount = 0;
-    let cartTotal = 0;
-    const cartCountEl  = document.getElementById('cart-count');
-    const bottomTotal  = document.getElementById('bottom-total');
-    const bottomBar    = document.getElementById('bottom-bar');
-    const toast        = document.getElementById('toast');
-    let toastTimer;
-
-    function showToast(msg) {
-      toast.textContent = '🛒 ' + msg;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
-    }
-
-    function updateCart() {
-      cartCountEl.textContent = cartCount;
-      bottomTotal.textContent = `${cartCount} item${cartCount !== 1 ? 's' : ''} · ₦${cartTotal.toLocaleString()}`;
-    }
-
-    document.querySelectorAll('.btn-cart').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const name  = btn.dataset.name;
-        const price = parseInt(btn.dataset.price, 10);
-        cartCount++;
-        cartTotal += price;
-        updateCart();
-        showToast(`${name} added to cart!`);
-      });
-    });
-
-    /* ── Back to top ── */
-    const backToTop = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 400);
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    /* ── Newsletter subscribe ── */
-    document.querySelector('.newsletter-form button').addEventListener('click', function () {
-      const input = this.previousElementSibling;
-      if (!input.value || !input.value.includes('@')) {
-        showToast('ifyeverest12@gmail.com');
-        return;
-      }
-      showToast('Subscribed! 🎉 Watch your inbox.');
-      input.value = '';
-    });
-
-    console.log('MaMaPutOnline ready — Naija food on the way!');
-  </script>
 </body>
 </html>
